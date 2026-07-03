@@ -1,8 +1,8 @@
 # LLM Wiki Agent Skill
 
-Three skills to help your agent to create and maintain a 'brain' for 
-itself, right inside your repo. using a Karpathy-style 
-**agent-maintained wiki** in your repo — a `wiki/`folder of small,
+Three skills to help your agent create and maintain a 'brain' for 
+itself, right inside your repo, using a Karpathy-style 
+**agent-maintained wiki** — a `wiki/` folder of small,
 cross-linked markdown docs an agent sets up, feeds, and keeps healthy.
 
 **Version:** Setup: 0.1.0, Ingest: 0.1.0, Lint: 0.1.0 · **License:** Artistic-2.0
