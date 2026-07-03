@@ -133,5 +133,5 @@ cat <<DONE
 
 released $NAME $VERSION locally (tag $TAG). Next (outward-facing — run when ready):
   git push --follow-tags
-  gh release create $TAG dist/$NAME.plugin --title "$NAME $VERSION" --notes "…"
+  gh release create $TAG dist/$NAME.plugin --title "$NAME $VERSION" --generate-notes
 DONE
