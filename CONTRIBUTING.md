@@ -17,7 +17,7 @@ released with one shared set of tooling. Each skill still versions and ships
 │   ├── setup-llm-wiki/       # each: SKILL.md (source of truth) + scripts/ references/ knowledge/
 │   ├── llm-wiki-ingest/
 │   └── llm-wiki-lint/
-├── release.sh                # cut a release for ONE skill: stamp → commit → tag → build (CLI path)
+├── release.sh                # cut a release for ONE skill: stamp → build → commit → tag (CLI path)
 ├── build.sh                  # builds a skill's distributable .plugin
 ├── stamp.py                  # writes origin frontmatter at release time
 ├── .gitignore
@@ -39,10 +39,10 @@ live beside it. A few rules keep each bundle buildable:
 - **No vault wikilinks in frontmatter.** Keep `[[…]]` out of the frontmatter
   block — `build.sh` rejects it.
 
-Changing the shared contract (the knowledge-operations conventions in
-`skills/setup-llm-wiki/knowledge/`, or the `AGENTS.md` wiki lines) usually means
-touching `llm-wiki-ingest` and `llm-wiki-lint` too — that's the whole reason these are
-one repo. Make such changes in one commit and release the affected skills together.
+Changing the knowledge-operations conventions in
+`skills/setup-llm-wiki/knowledge/`, or the `AGENTS.md` wiki lines usually means
+touching `llm-wiki-ingest` and `llm-wiki-lint` too. Make changes in one commit
+and release the affected skills together.
 
 ## Building a .plugin
 
@@ -96,19 +96,19 @@ Version history lives in git (tags + release notes); the file carries only
 
 Bump `metadata.version` in `skills/<name>/SKILL.md` to the version you're
 releasing (SemVer) and commit any pending work so the tree is clean. Then
-`release.sh` runs the whole local sequence — stamp → review → commit → tag →
-build — for one named skill. It does **local work only**: it never pushes and
+`release.sh` runs the whole local sequence — stamp → review → build → commit →
+tag — for one named skill. It does **local work only**: it never pushes and
 never creates the GitHub Release, so the outward-facing steps stay in your hands.
 
 ```bash
-./release.sh llm-wiki-lint v0.1.0        # stamp, show the diff, prompt, then commit + tag (llm-wiki-lint-v0.1.0) + build
+./release.sh llm-wiki-lint v0.1.0        # stamp, show the diff, prompt, then build + commit + tag (llm-wiki-lint-v0.1.0)
 #   -m "…"                            custom commit/tag message
 #   -y                                skip the review prompt
 #   --skip-version-check              allow metadata.version != version
 
 # when ready (outward-facing):
 git push --follow-tags
-gh release create llm-wiki-lint-v0.1.0 dist/llm-wiki-lint.plugin --title "llm-wiki-lint v0.1.0" --notes "…"
+gh release create llm-wiki-lint-v0.1.0 dist/llm-wiki-lint.plugin --title "llm-wiki-lint v0.1.0" --generate-notes
 ```
 
 It refuses to run on a dirty tree, without an `origin` remote, if the tag already
