@@ -1,4 +1,7 @@
 ---
+source: https://github.com/tylensthilaire/skill-llm-wiki.git
+source-path: skills/setup-llm-wiki
+ref: setup-llm-wiki-v0.1.0
 name: setup-llm-wiki
 description: >-
   Set up an agent-maintained wiki in a project: a wiki/ folder of small,
