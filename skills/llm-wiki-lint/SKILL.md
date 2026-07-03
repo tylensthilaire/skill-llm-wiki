@@ -1,4 +1,7 @@
 ---
+source: https://github.com/tylensthilaire/skill-llm-wiki.git
+source-path: skills/llm-wiki-lint
+ref: llm-wiki-lint-v0.1.0
 name: llm-wiki-lint
 description: >-
   Health-check the project's agent-maintained wiki and produce a lint report:
