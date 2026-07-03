@@ -1,4 +1,7 @@
 ---
+source: https://github.com/tylensthilaire/skill-llm-wiki.git
+source-path: skills/llm-wiki-ingest
+ref: llm-wiki-ingest-v0.1.0
 name: llm-wiki-ingest
 description: >-
   Ingest a source into the project's agent-maintained wiki: file it in raw/,
